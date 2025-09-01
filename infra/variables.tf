@@ -1,16 +1,20 @@
 variable "region" {
-  default = "us-east-1"
+  description = "AWS region"
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "cluster_name" {
-  default = "devops-eks-cluster"
+  description = "EKS cluster name"
+  type        = string
 }
 
 variable "vpc_id" {
-  description = "VPC ID where EKS will be created"
+  description = "VPC ID for EKS"
+  type        = string
 }
 
 variable "subnets" {
-  description = "Subnets for the worker nodes"
+  description = "Subnet IDs for worker nodes"
   type        = list(string)
 }
