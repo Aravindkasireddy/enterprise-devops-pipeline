@@ -9,12 +9,13 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region  = var.region
+  profile = "terraform-admin"
 }
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "17.24.0" # stable version
+  version = "17.24.0"
 
   cluster_name    = var.cluster_name
   cluster_version = "1.27"
