@@ -1,4 +1,12 @@
-🚀 Enterprise DevOps Pipeline on AWS
+# 🚀 Enterprise DevOps Pipeline on AWS
+
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Aravindkasireddy/enterprise-devops-pipeline/ci-cd.yml?label=CI%2FCD%20Pipeline&logo=github)
+![Terraform](https://img.shields.io/badge/Terraform-v1.13-blue?logo=terraform)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-EKS-brightgreen?logo=kubernetes)
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws)
+![Docker](https://img.shields.io/badge/Docker-Containerization-blue?logo=docker)
+![Python](https://img.shields.io/badge/Python-Flask-yellow?logo=python)
+
 
 An end-to-end DevOps project that builds, deploys, and runs a Flask application using:
 
