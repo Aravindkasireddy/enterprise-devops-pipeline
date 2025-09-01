@@ -1,4 +1,6 @@
-# 🚀 Enterprise DevOps Pipeline on AWS
+# 🚀 Enterprise DevOps Pipeline on AWS  
+![CI/CD](https://github.com/Aravindkasireddy/enterprise-devops-pipeline/actions/workflows/ci-cd.yml/badge.svg)
+
 
 This project demonstrates a **production-grade DevOps pipeline** integrating CI/CD, containerization, orchestration, Infrastructure as Code, monitoring, and logging on AWS.  
 It simulates how modern enterprises build, deploy, and manage cloud-native applications.
