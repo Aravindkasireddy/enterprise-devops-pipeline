@@ -6,6 +6,7 @@
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazon-aws)
 ![Docker](https://img.shields.io/badge/Docker-Containerization-blue?logo=docker)
 ![Python](https://img.shields.io/badge/Python-Flask-yellow?logo=python)
+> A fully automated **CI/CD pipeline** using **GitHub Actions, Terraform, AWS EKS, and Docker** to deploy a Flask application at scale.
 
 
 An end-to-end DevOps project that builds, deploys, and runs a Flask application using:
