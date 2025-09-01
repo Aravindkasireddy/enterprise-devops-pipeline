@@ -11,6 +11,8 @@ GitHub Actions (CI/CD) → Build, push, and deploy automatically
 Kubernetes (EKS) → Deploy and scale workloads
 
 AWS Load Balancer → Expose app publicly
+## 🏗️ Architecture
+
 flowchart TD
     A[GitHub Repo] -->|Push Code| B[GitHub Actions CI/CD]
     B -->|Build & Push| C[ECR: Docker Images]
@@ -61,24 +63,40 @@ kubectl apply -f k8s/service.yaml
 
 App URL:
 
-http://a544b64ec457640639a35c6de4fc28fb-2129974976.us-east-1.elb.amazonaws.com/
+## 🌍 Live Demo
+Public URL (provisioned via AWS Load Balancer):  
+[Flask App on AWS](http://a544b64ec457640639a35c6de4fc28fb-2129974976.us-east-1.elb.amazonaws.com/)
+
 
 
 ✅ Example output:
+## 📸 Screenshots
+- GitHub Actions pipeline success
+- Terraform EKS provisioning
+- kubectl get nodes & pods
+- Flask app live in browser
+
 <img width="1790" height="1051" alt="enterprise" src="https://github.com/user-attachments/assets/4f7b8462-79e3-48f6-aadc-9c128b713481" />
 <img width="1753" height="1063" alt="image" src="https://github.com/user-attachments/assets/4157e2ea-e7f9-432c-a531-cb8ddf8e6e74" />
 <img width="1035" height="268" alt="image" src="https://github.com/user-attachments/assets/3a6794fb-d9ac-4c78-b339-19e1f2efebd3" />
+
 🌟 Key Learnings
 
-Designed CI/CD pipeline from scratch with GitHub Actions
+🚀 Built a production-grade CI/CD pipeline with GitHub Actions
 
-Automated EKS provisioning with Terraform
+🛠 Automated infrastructure provisioning using Terraform (EKS, IAM, VPC)
 
-Containerized app using Docker & stored images in Amazon ECR
+📦 Containerized Flask app with Docker and deployed via Amazon ECR
 
-Exposed service via Kubernetes LoadBalancer → real-world cloud deployment
+🌐 Exposed workloads securely using Kubernetes LoadBalancer
 
 
-Kubernetes Deployment + Service applies via kubectl
+## 🔮 Future Enhancements
+- Add monitoring with Prometheus + Grafana
+- Enable Horizontal Pod Autoscaling (HPA)
+- Implement Canary Deployments with Argo Rollouts
+- Add Helm charts for easier deployment
 
-AWS Load Balancer exposes the service → live public app!
+
+
+
