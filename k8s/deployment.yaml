@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask-devops-container
-        image: <your-ecr-repo-uri>:latest   # replace with your ECR repo URI
+        image: 904233103745.dkr.ecr.us-east-1.amazonaws.com/flask-devops-app:latest   # replace with your ECR repo URI
         ports:
         - containerPort: 5000
