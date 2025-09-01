@@ -1,69 +1,84 @@
-# 🚀 Enterprise DevOps Pipeline on AWS  
-![CI/CD](https://github.com/Aravindkasireddy/enterprise-devops-pipeline/actions/workflows/ci-cd.yml/badge.svg)
+🚀 Enterprise DevOps Pipeline on AWS
 
-This project demonstrates a **production-grade DevOps pipeline** that covers the complete lifecycle of a modern cloud-native application:  
-- **Application** (Flask app containerized with Docker)  
-- **CI/CD pipeline** (GitHub Actions) → pushes images to AWS ECR  
-- **Infrastructure as Code** (Terraform) → EKS cluster provisioning  
-- **Kubernetes manifests** → deploy app to EKS with LoadBalancer  
-- **Future scope** → Monitoring (Prometheus/Grafana) and Logging (ELK/CloudWatch)  
+An end-to-end DevOps project that builds, deploys, and runs a Flask application using:
 
----
+Terraform → Infrastructure as Code (EKS Cluster, VPC, Subnets, IAM, Security Groups)
 
-## 🏗️ Architecture
+Docker & Amazon ECR → Containerize and store application images
 
-```text
-Developer → GitHub (Code) → GitHub Actions (CI/CD) → Docker Build → AWS ECR (Image Repo)
-                                                              ↓
-                                            Terraform (EKS Cluster on AWS)
-                                                              ↓
-                                      Kubernetes Deployment + Service (EKS)
-Tech Stack
+GitHub Actions (CI/CD) → Build, push, and deploy automatically
 
-Cloud: AWS (ECR, EKS, IAM, VPC, EC2, CloudWatch)
+Kubernetes (EKS) → Deploy and scale workloads
 
-CI/CD: GitHub Actions
+AWS Load Balancer → Expose app publicly
+flowchart TD
+    A[GitHub Repo] -->|Push Code| B[GitHub Actions CI/CD]
+    B -->|Build & Push| C[ECR: Docker Images]
+    C -->|Deploy via kubectl| D[EKS Cluster]
+    D -->|Pods Running| E[LoadBalancer Service]
+    E -->|Public URL| F[User Browser]
+⚙️ Tech Stack
 
-Containers: Docker, Kubernetes
+Language: Python (Flask)
 
 IaC: Terraform
 
-Monitoring (Future): Prometheus, Grafana
+Containers: Docker, Amazon ECR
 
-Logging (Future): ELK Stack / CloudWatch
+Orchestration: Kubernetes on AWS EKS
+
+CI/CD: GitHub Actions
+
+🚦 How It Works
+
+Developer pushes code → GitHub Actions triggers
+
+Pipeline builds Docker image and pushes to Amazon ECR
+
+Terraform provisions EKS cluster with VPC, subnets, IAM roles
+
+📂 Repository Structure
 enterprise-devops-pipeline/
-│── app/                  # Flask app (source + Dockerfile)
-│── .github/workflows/    # GitHub Actions CI/CD workflows
-│── infra/                # Terraform scripts for AWS EKS
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-│── k8s/                  # Kubernetes deployment + service manifests
-│   ├── deployment.yaml
-│   └── service.yaml
-│── README.md             # Documentation
-Pipeline Flow
+│── app/                 # Flask app + Dockerfile
+│── infra/               # Terraform code (EKS, IAM, VPC)
+│── k8s/                 # Kubernetes manifests
+│── .github/workflows/   # CI/CD pipeline (GitHub Actions)
+│── README.md            # Project documentation
+🚀 Deployment Demo
 
-Code Push (GitHub)
+Terraform provisions infra:
 
-Developer commits changes to main branch.
+terraform init
+terraform plan
+terraform apply
 
-CI/CD (GitHub Actions)
 
-Workflow triggers automatically.
+Kubernetes Deployments:
 
-Builds Docker image from app/Dockerfile.
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
 
-Pushes image to AWS ECR.
 
-Infrastructure (Terraform)
+App URL:
 
-Terraform code in infra/ provisions AWS EKS cluster.
+http://a544b64ec457640639a35c6de4fc28fb-2129974976.us-east-1.elb.amazonaws.com/
 
-Includes VPC, Subnets, IAM roles, and Node Groups.
 
-Deployment (Kubernetes)
+✅ Example output:
+<img width="1790" height="1051" alt="enterprise" src="https://github.com/user-attachments/assets/4f7b8462-79e3-48f6-aadc-9c128b713481" />
+<img width="1753" height="1063" alt="image" src="https://github.com/user-attachments/assets/4157e2ea-e7f9-432c-a531-cb8ddf8e6e74" />
+<img width="1035" height="268" alt="image" src="https://github.com/user-attachments/assets/3a6794fb-d9ac-4c78-b339-19e1f2efebd3" />
+🌟 Key Learnings
 
-Kubernetes manifests in k8s/ deploy the app from ECR into EKS.
+Designed CI/CD pipeline from scratch with GitHub Actions
 
-Service of type LoadBalancer exposes it publicly.
+Automated EKS provisioning with Terraform
+
+Containerized app using Docker & stored images in Amazon ECR
+
+Exposed service via Kubernetes LoadBalancer → real-world cloud deployment
+
+
+Kubernetes Deployment + Service applies via kubectl
+
+AWS Load Balancer exposes the service → live public app!
