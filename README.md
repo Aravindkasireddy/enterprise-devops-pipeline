@@ -43,3 +43,6 @@ enterprise-devops-pipeline/
 │── logging/ # ELK configs (coming soon)
 │── diagrams/ # Architecture diagrams
 │── README.md
+
+---
+✅ CI/CD pipeline running with GitHub Actions
