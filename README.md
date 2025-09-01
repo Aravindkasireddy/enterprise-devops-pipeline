@@ -1,50 +1,69 @@
 # 🚀 Enterprise DevOps Pipeline on AWS  
 ![CI/CD](https://github.com/Aravindkasireddy/enterprise-devops-pipeline/actions/workflows/ci-cd.yml/badge.svg)
 
-
-This project demonstrates a **production-grade DevOps pipeline** integrating CI/CD, containerization, orchestration, Infrastructure as Code, monitoring, and logging on AWS.  
-It simulates how modern enterprises build, deploy, and manage cloud-native applications.
+This project demonstrates a **production-grade DevOps pipeline** that covers the complete lifecycle of a modern cloud-native application:  
+- **Application** (Flask app containerized with Docker)  
+- **CI/CD pipeline** (GitHub Actions) → pushes images to AWS ECR  
+- **Infrastructure as Code** (Terraform) → EKS cluster provisioning  
+- **Kubernetes manifests** → deploy app to EKS with LoadBalancer  
+- **Future scope** → Monitoring (Prometheus/Grafana) and Logging (ELK/CloudWatch)  
 
 ---
 
 ## 🏗️ Architecture
 
-**Workflow:**
-1. Developer pushes code to GitHub.
-2. CI/CD (Jenkins or GitHub Actions) triggers build → Docker image.
-3. Image pushed to AWS Elastic Container Registry (ECR).
-4. Terraform provisions AWS infra (VPC, EC2, RDS, IAM, EKS).
-5. Kubernetes deploys microservices to EKS.
-6. Monitoring with Prometheus & Grafana.
-7. Logging with ELK + AWS CloudWatch.
+```text
+Developer → GitHub (Code) → GitHub Actions (CI/CD) → Docker Build → AWS ECR (Image Repo)
+                                                              ↓
+                                            Terraform (EKS Cluster on AWS)
+                                                              ↓
+                                      Kubernetes Deployment + Service (EKS)
+Tech Stack
 
-(📌 Add an architecture diagram here later → save it in `/diagrams/architecture.png`)
+Cloud: AWS (ECR, EKS, IAM, VPC, EC2, CloudWatch)
 
----
+CI/CD: GitHub Actions
 
-## ⚙️ Tech Stack
-- **Cloud:** AWS (EKS, EC2, RDS, IAM, VPC, S3, CloudWatch)  
-- **CI/CD:** Jenkins, GitHub Actions  
-- **Containers:** Docker, Kubernetes, Helm  
-- **IaC:** Terraform  
-- **Monitoring:** Prometheus, Grafana  
-- **Logging:** ELK Stack  
+Containers: Docker, Kubernetes
 
----
+IaC: Terraform
 
-## 📂 Repository Structure
+Monitoring (Future): Prometheus, Grafana
+
+Logging (Future): ELK Stack / CloudWatch
 enterprise-devops-pipeline/
-│── app/ # Application source code
-│ ├── app.py
-│ ├── requirements.txt
-│ └── Dockerfile
-│── ci-cd/ # Jenkinsfile / GitHub Actions workflows (coming soon)
-│── infra/ # Terraform scripts (coming soon)
-│── k8s/ # Kubernetes manifests (coming soon)
-│── monitoring/ # Prometheus & Grafana configs (coming soon)
-│── logging/ # ELK configs (coming soon)
-│── diagrams/ # Architecture diagrams
-│── README.md
+│── app/                  # Flask app (source + Dockerfile)
+│── .github/workflows/    # GitHub Actions CI/CD workflows
+│── infra/                # Terraform scripts for AWS EKS
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+│── k8s/                  # Kubernetes deployment + service manifests
+│   ├── deployment.yaml
+│   └── service.yaml
+│── README.md             # Documentation
+Pipeline Flow
 
----
-✅ CI/CD pipeline running with GitHub Actions
+Code Push (GitHub)
+
+Developer commits changes to main branch.
+
+CI/CD (GitHub Actions)
+
+Workflow triggers automatically.
+
+Builds Docker image from app/Dockerfile.
+
+Pushes image to AWS ECR.
+
+Infrastructure (Terraform)
+
+Terraform code in infra/ provisions AWS EKS cluster.
+
+Includes VPC, Subnets, IAM roles, and Node Groups.
+
+Deployment (Kubernetes)
+
+Kubernetes manifests in k8s/ deploy the app from ECR into EKS.
+
+Service of type LoadBalancer exposes it publicly.
