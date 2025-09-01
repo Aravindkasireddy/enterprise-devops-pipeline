@@ -13,12 +13,27 @@ provider "aws" {
   profile = "terraform-admin"
 }
 
+# --- ECR Repository ---
+resource "aws_ecr_repository" "flask_app" {
+  name = "flask-devops-app"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = {
+    Name        = "flask-devops-app"
+    Environment = "dev"
+  }
+}
+
+# --- EKS Cluster ---
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "17.24.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.29"   # ✅ change here
+  cluster_version = "1.29"
   vpc_id          = var.vpc_id
   subnets         = var.subnets
 
