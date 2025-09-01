@@ -1,22 +1,18 @@
-provider "aws" {
-  region = var.region
-}
-
-# Create EKS cluster
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
+  source  = "terraform-aws-modules/eks/aws"
+  version = "17.24.0"
+
   cluster_name    = var.cluster_name
   cluster_version = "1.27"
-  subnets         = var.subnets
   vpc_id          = var.vpc_id
+  subnets         = var.subnets
 
   node_groups = {
-    default = {
+    dev = {
       desired_capacity = 2
       max_capacity     = 3
       min_capacity     = 1
-
-      instance_types = ["t3.small"]
+      instance_types   = ["t3.medium"]
     }
   }
 }
