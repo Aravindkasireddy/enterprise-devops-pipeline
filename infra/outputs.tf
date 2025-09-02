@@ -3,7 +3,7 @@ output "ecr_repository_url" {
   value = aws_ecr_repository.flask_app.repository_url
 }
 
-# --- EKS Outputs (disabled for now) ---
+# --- EKS Outputs (commented out for now) ---
 # output "cluster_id" {
 #   value = module.eks.cluster_id
 # }
