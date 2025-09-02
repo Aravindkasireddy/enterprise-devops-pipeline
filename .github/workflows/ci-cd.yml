@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'README.md'   # ignore README edits
-      - '**.md'       # ignore all markdown files
+      - 'README.md'
+      - '**.md'
 
 jobs:
   build:
@@ -36,10 +36,12 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           IMAGE_TAG: latest
+          COMMIT_SHA: ${{ github.sha }}
         run: |
-          # Build with full ECR path
+          echo "Building Docker image..."
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app
-          
-          # Push to ECR
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$COMMIT_SHA
 
+          echo "Pushing Docker images..."
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$COMMIT_SHA
