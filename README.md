@@ -104,7 +104,7 @@ Public URL (provisioned via AWS Load Balancer):
 - Add monitoring with Prometheus + Grafana
 - Enable Horizontal Pod Autoscaling (HPA)
 - Implement Canary Deployments with Argo Rollouts
-- Add Helm charts for easier deployment
+- Add Helm charts for easier deployment.
 
 
 
