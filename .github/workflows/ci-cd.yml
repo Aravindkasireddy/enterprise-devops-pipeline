@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - 'README.md'   # ignore README edits
       - '**.md'       # ignore all markdown files
-     
 
 jobs:
   build:
@@ -38,5 +37,9 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           IMAGE_TAG: latest
         run: |
-          docker build -t $ECR_REPOSITORY:$IMAGE_TAG ./app
-          docker push $ECR_REPOSITORY:$IMAGE_TAG
+          # Build with full ECR path
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app
+          
+          # Push to ECR
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
