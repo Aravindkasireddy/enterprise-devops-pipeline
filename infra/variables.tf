@@ -1,20 +1,24 @@
+# --- Variables ---
+
+# AWS Region
 variable "region" {
-  description = "AWS region"
+  description = "AWS region to deploy resources"
   type        = string
   default     = "us-east-1"
 }
 
-variable "cluster_name" {
-  description = "EKS cluster name"
-  type        = string
-}
-
-variable "vpc_id" {
-  description = "VPC ID for EKS"
-  type        = string
-}
-
-variable "subnets" {
-  description = "Subnet IDs for worker nodes"
-  type        = list(string)
-}
+# --- EKS Variables (commented out for now) ---
+# variable "cluster_name" {
+#   description = "EKS cluster name"
+#   type        = string
+# }
+#
+# variable "vpc_id" {
+#   description = "VPC ID for the EKS cluster"
+#   type        = string
+# }
+#
+# variable "subnets" {
+#   description = "Subnets for the worker nodes"
+#   type        = list(string)
+# }
