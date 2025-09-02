@@ -27,11 +27,6 @@ resource "aws_ecr_repository" "flask_app" {
   }
 }
 
-# --- Outputs ---
-output "ecr_repository_url" {
-  value = aws_ecr_repository.flask_app.repository_url
-}
-
 # --- EKS Cluster (commented out for now to avoid costs) ---
 # module "eks" {
 #   source  = "terraform-aws-modules/eks/aws"
