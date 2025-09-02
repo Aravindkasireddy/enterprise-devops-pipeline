@@ -72,9 +72,8 @@ kubectl apply -f k8s/service.yaml
 
 App URL:
 
-## 🌍 Live Demo
-Public URL (provisioned via AWS Load Balancer):  
-[Flask App on AWS](http://a544b64ec457640639a35c6de4fc28fb-2129974976.us-east-1.elb.amazonaws.com/)
+🌍 **Live Demo**: [Flask App on AWS](http://a544b64ec457640639a35c6de4fc28fb-2129974976.us-east-1.elb.amazonaws.com/)
+
 
 
 
@@ -105,7 +104,23 @@ Public URL (provisioned via AWS Load Balancer):
 - Enable Horizontal Pod Autoscaling (HPA)
 - Implement Canary Deployments with Argo Rollouts
 - Add Helm charts for easier deployment.
-# Testing pipeline trigger
+
+
+
+
+# Clone the repo
+git clone https://github.com/Aravindkasireddy/enterprise-devops-pipeline.git
+cd enterprise-devops-pipeline
+
+# Deploy infra
+cd infra
+terraform init
+terraform apply
+
+# Deploy app
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
 
 
 
