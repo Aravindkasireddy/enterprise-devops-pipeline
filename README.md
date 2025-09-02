@@ -105,6 +105,7 @@ Public URL (provisioned via AWS Load Balancer):
 - Enable Horizontal Pod Autoscaling (HPA)
 - Implement Canary Deployments with Argo Rollouts
 - Add Helm charts for easier deployment.
+# Triggering pipeline test
 
 
 
